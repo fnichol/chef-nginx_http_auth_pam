@@ -19,8 +19,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "nginx::source"
-
 version = node[:nginx_http_auth_pam][:version]
 src_dir = "/tmp/ngx_http_auth_pam_module-#{version}" 
 
@@ -35,5 +33,11 @@ bash "compile_nginx_source" do
     tar zxf ngx_http_auth_pam_module-#{version}.tar.gz
   EOH
   creates src_dir
+end
+
+execute "nginx_http_auth_pam module" do
+  include_recipe "nginx::source"
+  not_if %{#{nginx_install}/sbin/nginx -V 2>&1 | grep "--add-module=#{src_dir}"}
+  notifies :restart, resources(:service => "nginx")
 end
 
