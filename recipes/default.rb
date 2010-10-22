@@ -32,7 +32,7 @@ end
 bash "compile_nginx_source" do
   cwd "/tmp"
   code <<-EOH
-    tar zxf ngx_http_auth_pam_module-#{version}
+    tar zxf ngx_http_auth_pam_module-#{version}.tar.gz
   EOH
   creates src_dir
 end
