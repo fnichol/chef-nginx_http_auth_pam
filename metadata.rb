@@ -15,3 +15,8 @@ end
   supports os
 end
 
+attribute "nginx_http_auth_pam/version",
+  :display_name => "Module version",
+  :description => "Module version",
+  :default => "1.1"
+

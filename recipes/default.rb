@@ -21,7 +21,7 @@
 
 include_recipe "nginx::source"
 
-version = node[:nginx_http_auth_path][:version]
+version = node[:nginx_http_auth_pam][:version]
 src_dir = "/tmp/ngx_http_auth_pam_module-#{version}" 
 
 remote_file "/tmp/ngx_http_auth_pam_module-#{version}.tar.gz" do
