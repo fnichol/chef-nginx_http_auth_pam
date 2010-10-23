@@ -26,6 +26,10 @@ node[:nginx][:configure_flags].push(
   "--add-module=/tmp/ngx_http_auth_pam_module-1.1"
 )
 
+%w{ libpam0g-dev }.each do |pkg|
+  package pkg
+end
+
 remote_file "/tmp/ngx_http_auth_pam_module-#{version}.tar.gz" do
   source "http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-#{version}.tar.gz"
   action :create_if_missing
