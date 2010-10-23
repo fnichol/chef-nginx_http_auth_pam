@@ -31,7 +31,7 @@ remote_file "/tmp/ngx_http_auth_pam_module-#{version}.tar.gz" do
   action :create_if_missing
 end
 
-bash "compile_nginx_source" do
+bash "extract ngx_http_auth_pam_module tar" do
   cwd "/tmp"
   code <<-EOH
     tar zxf ngx_http_auth_pam_module-#{version}.tar.gz
