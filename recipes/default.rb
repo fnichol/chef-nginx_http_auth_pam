@@ -22,6 +22,10 @@
 version = node[:nginx_http_auth_pam][:version]
 src_dir = "/tmp/ngx_http_auth_pam_module-#{version}" 
 
+node[:nginx][:configure_flags].push(
+  "--add-module=/tmp/ngx_http_auth_pam_module-1.1"
+)
+
 remote_file "/tmp/ngx_http_auth_pam_module-#{version}.tar.gz" do
   source "http://web.iti.upv.es/~sto/nginx/ngx_http_auth_pam_module-#{version}.tar.gz"
   action :create_if_missing
